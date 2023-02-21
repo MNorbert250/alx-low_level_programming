@@ -3,11 +3,12 @@
 /**
  * _isalpha - function that checks for alphabetic character.
  * Return: int.
+ * @c: The input character to check
  */
 
-int _isalpha(int k)
+int _isalpha(int c)
 {
-	if ((k >= 65 && k <= 90) || (k >= 97 && k <= 122))
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);
 	else
 		return (0);
