@@ -10,26 +10,26 @@
  */
 int check_password(char *pwd)
 {
-        unsigned int xor;
-        unsigned char i;
-        unsigned char mask;
+	unsigned int xor;
+	unsigned char i;
+	unsigned char mask;
 
-        if (strlen(pwd) != 4)
-        {
-                return (0);
-        }
-        xor = 0x046c6f48;
-        /* ./a.out `printf "Hol\x04"` */
-        mask = 0xff;
-        for (i = 0; i < 4; i++)
-        {
-                /* printf("Comparing %x w %x\n", pwd[i], ((xor >> (i * 8)) & mask));*/
-                if ((unsigned char)(pwd[i]) != ((xor >> (i * 8)) & mask))
-                {
-                        return (0);
-                }
-        }
-        return (1);
+	if (strlen(pwd) != 4)
+	{
+		return (0);
+	}
+	xor = 0x046c6f48;
+	/* ./a.out `printf "Hol\x04"` */
+	mask = 0xff;
+	for (i = 0; i < 4; i++)
+	{
+		/* printf("Comparing %x w %x\n", pwd[i], ((xor >> (i * 8)) & mask));*/
+		if ((unsigned char)(pwd[i]) != ((xor >> (i * 8)) & mask))
+		{
+			return (0);
+		}
+	}
+	return (1);
 }
 
 /**
@@ -42,22 +42,22 @@ int check_password(char *pwd)
  */
 int main(int ac, char **av)
 {
-        int ret;
+	int ret;
 
-        if (ac != 2)
-        {
-                fprintf(stderr, "Usage: %s password\n", av[0]);
-                return (1);
-        }
-        ret = check_password(av[1]);
-        if (ret == 1)
-        {
-                printf("Congratulations!\n");
-        }
-        else
-        {
-                printf("ko\n");
-                return (1);
-        }
-        return (0);
+	if (ac != 2)
+	{
+		fprintf(stderr, "Usage: %s password\n", av[0]);
+		return (1);
+	}
+	ret = check_password(av[1]);
+	if (ret == 1)
+	{
+		printf("Congratulations!\n");
+	}
+	else
+	{
+		printf("ko\n");
+		return (1);
+	}
+	return (0);
 }
